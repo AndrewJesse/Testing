@@ -2,18 +2,15 @@
 {
     public class Product
     {
-        public string Name {  get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         public decimal? Price { get; set; }
-
-        public static Product[] GetProducts()
+        public class ProductDataSource : IDataSource
         {
-            Product kayak = new Product{
-                Name = "Kayak", 
-                Price = 275M}; 
-            Product lifejacket = new Product{
-                Name = "Lifejacket", 
-                Price = 275M};
-            return new Product[] { kayak, lifejacket };
+            public IEnumerable<Product> Products => 
+                new Product[] { 
+                    new Product { Name = "Kayak", Price = 275M }, 
+                    new Product { Name = "Lifejacket", Price = 48.95M }
+            };
         }
     }
 }
